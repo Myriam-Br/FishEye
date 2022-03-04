@@ -15,17 +15,12 @@ class Home {
         console.log('photographersTab',Photographers );
 
         Photographers.forEach(photographer => {
-            const Template = new PhotographerCard(photographer)
+            const Template = cardPhotographer(new PhotographerCard(photographer)) 
             
-
             //creation card pour chaque photographer
             this.$photographersWrapper.appendChild(
                 Template.getUserCardDOM()   
-
-
-            )   
-            
-          
+            )    
         })  
         
         console.log("CARD CONTAINER",this.$photographersWrapper);

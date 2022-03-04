@@ -6,10 +6,10 @@ class ContactFormModal{
 
         this.$wrapperForm = document.querySelector('.modal')
         console.log(this.$wrapperForm); 
-        this.formContact = document.getElementById('contact_form')
-
-        
+        this.formContact = document.getElementById('contact_form')   
     }
+
+    
   createContactForm() {
 
     const firstName = document.createElement('input')

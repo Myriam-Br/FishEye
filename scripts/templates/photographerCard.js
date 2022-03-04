@@ -4,14 +4,11 @@ class PhotographerCard{
         this._photographer = photographer
         this.$wrapper = document.createElement('article')
         this.$wrapper.classList.add('photographer-card-wrapper')
-
-        //console.log(photographer);
     }
 
     
     getUserCardDOM() {
         
-
         //portrait pic
         const img = document.createElement( 'img' );
         //img.classList.add('pfp')
@@ -39,7 +36,6 @@ class PhotographerCard{
         const price = document.createElement('p')
         price.classList.add('price')
         price.innerHTML = this._photographer.price + "/jour"
-
 
 
 
