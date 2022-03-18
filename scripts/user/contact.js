@@ -42,11 +42,10 @@ class ContactForm{
     }
 
     get contact(){
-
         const firstName = localStorage.getItem('firstName')
-        console.log(firstName);
-
-
+        const lastName = localStorage.getItem('lastName')
+        const email = localStorage.getItem('email')
+        const message = localStorage.getItem('message')
     }
     
     //fonction de sauvegarde

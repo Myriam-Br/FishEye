@@ -14,36 +14,65 @@
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
+      </div>  
+      
+   
+   
+      
+    <!--MODAL CONTACT-->
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 id="contact_title">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form action="" id="contact_form">
-
-        </form>
-				
-			</div>
+        </header>     	  	
+			</div> 	
 		</div>
 
-    <div id="photographer_section">
-      
-    </div>
+   
+    
+    <!--SCRIPTS-->
+    <!--Icon-->
+    <script src="https://kit.fontawesome.com/7e4732a8a2.js" crossorigin="anonymous"></script>
+   
 
-    <!--Utils
-   <script src="/scripts/utils/contactForm.js"></script>-->
+    <!--Utils-->
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/templates/formModal.js"></script>
+
+    <!--Decorators-->
+    <script src="scripts/decorators/logoBackToHome.js"></script>
+
      <!--Api-->
      <script src="scripts/api/photographerApi.js"></script>
 
-    <!--Template-->
-    <script src="scripts/templates/formModal.js"></script>
-    <script src="scripts/templates/photographerCard.js"></script>
-    
     <!--Singleton-->
     <script src="scripts/user/contact.js"></script>
+
+    <!--Models-->
+    <script src="scripts/models/photographer.js"></script>
+    <script src="scripts/models/media.js"></script>
+    
+ 
+    <!--Proxy Sorter-->
+    <script src="scripts/proxy/ratingMedia.js"></script>
+    <script src="scripts/proxy/proxyRatingMedia.js"></script>
+
+
+    <!--Template-->
+    <script src="scripts/templates/filterSource.js"></script>
+    <script src="scripts/templates/photographerCard.js"></script>
+    <script src="scripts/templates/mediaCard.js"></script>
+    <script src="scripts/templates/totalLikesPhotographer.js"></script>
+
+
+    <!--Media PLayer-->
+    <script src="scripts/decorators/mediaCardPlayer.js"></script>
+
+    <!--Likes/dislikes-->
+    <script src="scripts/likesCounter.js/counter.js"></script>
+    <script src="scripts/likesCounter.js/subject.js"></script>
+
   
     <!--Pages-->
     <script src="scripts/pages/photographer.js"></script>

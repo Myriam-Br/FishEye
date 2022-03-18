@@ -1,55 +1,144 @@
 class ContactFormModal{
-    constructor(data){
-
-        this._data = data
-        console.log(this._data);
-
-        this.$wrapperForm = document.querySelector('.modal')
-        console.log(this.$wrapperForm); 
-        this.formContact = document.getElementById('contact_form')   
+    constructor(){
+      
+      this.$wrapper = document.createElement('div')
+      this.$modalWrapper= document.querySelector('.modal') 
+      this.$h2 = document.getElementById('contact_title')          
     }
 
+    onSubmitForm() {
+      this.$wrapper
+      .querySelector('form')
+      .addEventListener('submit', e => {
+        e.preventDefault()
+
+        const firstNameInput = this
+        .$wrapper
+        .querySelector('#firstName')
+        .value;
+
+        const lastNameInput = this
+        .$wrapper
+        .querySelector('#lastName')
+        .value;
+
+        const emailInput = this
+        .$wrapper
+        .querySelector('#email')
+        .value;
+
+        const messageInput = this
+        .$wrapper
+        .querySelector('#message')
+        .value;
+
+        const contact = new ContactForm({
+          firstName : firstNameInput,
+          lastName : lastNameInput,
+          email : emailInput,
+          message : messageInput,
+        })
+
+        console.log(contact);
+      })
+    }
+
+
+    createContactForm() {
+
+      if(localStorage.getItem('name') !== null) {
+        this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
     
-  createContactForm() {
+        const formContact = document.createElement('form')
 
-    const firstName = document.createElement('input')
-    const firstNameLabel = document.createElement('label')
+        ////////////////firstName
+        const firstNameDiv = document.createElement('div')
+        firstNameDiv.classList.add('firstName_section')
 
-    const lastName = document.createElement('input')
-    const lastNameLabel = document.createElement('label')
+        const firstNameLabel = document.createElement('label')
+        firstNameLabel.setAttribute('for', 'firstName')
+        const firstName = document.createElement('input')
+        firstName.setAttribute('id', 'firstName')
 
-    const email = document.createElement('input')
-    const emailLabel = document.createElement('label')
+        firstNameLabel.innerHTML = "Prénom"   
 
-    const message = document.createElement('input')
-    const messageLabel = document.createElement('label')
-
+        firstNameDiv.appendChild(firstNameLabel)
+        firstNameDiv.appendChild(firstName)
     
-    this.formContact.appendChild(firstName)
-    this.formContact.appendChild(firstNameLabel)
 
-    this.formContact.appendChild(lastName)
-    this.formContact.appendChild(lastNameLabel)
+      /////////////////lastName
+        const lastNameDiv = document.createElement('div')
+        lastNameDiv.classList.add('lastName_section')
 
-    this.formContact.appendChild(email)
-    this.formContact.appendChild(emailLabel)
+        const lastName = document.createElement('input')
+        lastName.setAttribute('id', 'lastName')
+        const lastNameLabel = document.createElement('label')
+        lastNameLabel.setAttribute('for', 'lastName')
 
-    this.formContact.appendChild(message)
-    this.formContact.appendChild(messageLabel)
-    
-    console.log('INPUT',this.formContact);
+        lastNameLabel.innerHTML = "Nom"   
+
+        lastNameDiv.appendChild(lastNameLabel)
+        lastNameDiv.appendChild(lastName)
+
+        /////////////////email
+        const emailDiv = document.createElement('div')
+        emailDiv.classList.add('email_section')
+
+        const email = document.createElement('input')
+        email.setAttribute('id', 'email')
+        const emailLabel = document.createElement('label')
+        emailLabel.setAttribute('for', 'email')
+
+        emailLabel.innerHTML = "Email"
+
+        emailDiv.appendChild(emailLabel)
+        emailDiv.appendChild(email)
+        
+
+        //console.log(emailDiv);
+
+        /////////////message
+        const messageDiv = document.createElement('div')
+        messageDiv.classList.add('message_section')
+
+        const message = document.createElement('input')
+        message.setAttribute('id', 'message')
+        const messageLabel = document.createElement('label')
+        messageLabel.setAttribute('for', 'message')
+
+        messageLabel.innerHTML="Message"
+
+        messageDiv.appendChild(messageLabel)
+        messageDiv.appendChild(message)
+        
+
+        ///////button submit
+        const btnSubmit = document.createElement('button')
+        btnSubmit.classList.add('btn_submit')
+        btnSubmit.innerHTML = "Envoyer"
+
+        formContact.appendChild(firstNameDiv)
+        formContact.appendChild(lastNameDiv)
+        formContact.appendChild(emailDiv)
+        formContact.appendChild(messageDiv)
+        formContact.appendChild(btnSubmit)
+        
+
+        //console.log(formContact);
+        //console.log(this.$wrapper);
+        this.$wrapper.appendChild(formContact)
+
+        this.$modalWrapper.appendChild(this.$wrapper)
 
 
-    this.$wrapperForm.innerHTML = this.formContact
-    
-    
-    return this.$wrapperForm
+        //console.log('MODAL WRAPPER',this.$modalWrapper); 
+        //console.log('CONTACT WRAPPER',this.$wrapper);    
+      }
+    }
 
-
-  }
-
-  render(){
-      this.createContactForm()
-  }
+    render(){
+        this.createContactForm()
+        this.onSubmitForm()
+    }
     
 }

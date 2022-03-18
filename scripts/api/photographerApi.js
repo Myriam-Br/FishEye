@@ -1,44 +1,97 @@
-class Api {
+class API {
     constructor(url) {
         this._url = url
     }
 
-    //method
+
     async get() {
-        return fetch(this._url)
-                .then(res => res.json())
-                .then(res => res.photographers)
-                .catch(err => console.log("error", err))
+        return fetch(this._url) 
+                    .then(res => res.json())
+                    .then(res => res.photographers)
+                    .catch(err => console.log("error", err))
+    }
+    async getById(i) {
+        return  fetch(this._url) 
+                    .then(res => res.json())
+                    .then(res => {
+                        res.photographers
+                        console.log(res.photographers);
+                        for(let j = 0; j < res.photographers.length; j++) {
+
+                            if(res.photographers[j].id === i) {
+                                return res.photographers[j]
+                            } else {
+                               
+                            }
+                            
+                        }
+
+
+                     
+
+                    })
+                    .catch(err => console.log("error", err))
     }
 
-    //method
-    async getId(i) {
-        return fetch(this._url)
-                .then(res => res.json())
-                .then(res => res.photographers[i])
-                .catch(err => console.log("error", err))
+
+    async getMediaById() {
+        return  fetch(this._url) 
+                    .then(res => res.json())
+                    .then(res => {
+                        res.media
+                        //console.log(res.media);
+                        const mediaOfPhotographer = []
+                        let idPhotographer =JSON.parse(localStorage.getItem('id'))
+                        console.log(idPhotographer);
+                        res.media.forEach(media => {
+
+                            if(media.photographerId == idPhotographer){
+                                mediaOfPhotographer.push(media)     
+                            } else{
+                                //console.log('ERROR');
+                            }
+                           
+                           
+                        });
+                        //console.log('MEDIA TAB',mediaOfPhotographer);
+                        return mediaOfPhotographer
+
+                    })
+                    .catch(err => console.log("error", err))
     }
 
-  
+
 
    
 }
 
-class PhotographerApi extends Api{
+
+class PhotographerApi extends API{
 
     constructor(url) {
-        super(url) 
-       
+        super(url)
     }
-   
     async getPhotographers(){
         return await this.get()
     }
 
     async getPhotographerById(){
-        return await this.getId(i)
+        return await this.getById(i)
     }
-
 }
 
+
+
+class MediaApi extends API {
+    constructor(url) {
+        super(url)
+    }
+
+    async getMediaByIdPjotographer(){
+        return await this.getMediaById()
+    }
+
+
+
+}
 

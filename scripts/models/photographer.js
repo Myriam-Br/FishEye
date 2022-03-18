@@ -46,6 +46,6 @@ class Photographer {
     }
 
     get portrait(){
-        return `/media/Photographers ID Photos/${this._portrait}`
+        return this._portrait
     }
 }
