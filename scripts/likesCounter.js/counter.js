@@ -2,7 +2,7 @@ class LikesCounter {
     constructor() {
         this._count = 0
         this.$likesCount = document.querySelector('.like_count')
-        console.log(this.$likesCount);
+        console.log('LIKES',this.$likesCount);
     }
 
     update(action) {
@@ -17,3 +17,4 @@ class LikesCounter {
         this.$likesCount.innerHTML = this._count
     }
 }
+

@@ -7,23 +7,24 @@ class DisplayMedia{
         this.$mediaCard = document.createElement('div')
         this.$mediaCard.setAttribute('id', 'media_card_section')
         this.Medias = Medias
-        //this.LikesSubject =  LikesSubject
+        this.LikesSubject = LikesSubject
         //console.log(this.Medias);
         //console.log(this.name);
-        //console.log(this.LikesSubject);
+        //console.log(LikesSubject);
+        //console.log(LikesCounter);
     }
 
     handleLikedButton() {
         const that = this
-        //console.log(that.$mediaCard.querySelector('.media_card').querySelector('.btn-like'));
+        //console.log(that.$mediaCard);
         
         this.$mediaCard.querySelector('.media_card')
             .querySelector('.btn-like')
             .addEventListener('click', function() {
-     
                 if (this.classList.contains('liked')) {
                     this.classList.remove('liked')
                     this.LikesSubject.fire('DEC')
+                    console.log(this.LikesSubject.fire('DEC'));
                     
                 } else {
                     this.classList.add('liked')
@@ -34,15 +35,16 @@ class DisplayMedia{
 
     
     getMediaCardDOM(){
-       
-        this._name = this.name.substring(0, this.name.indexOf(' '));
-        console.log('NAME',this._name);
 
+      
+        this._name = this.name.substring(0, this.name.indexOf(' '));
+        //console.log('NAME',this._name);
 
         this.Medias.forEach(media => {
-
+            
             const mediaCardDiv = document.createElement('div')
             mediaCardDiv.classList.add('media_card')
+
             //console.log(media);
             if(media._video == undefined) {
                 const image = document.createElement('img')
@@ -88,7 +90,9 @@ class DisplayMedia{
             this.handleLikedButton()
         });
 
-        return  this.$mediaCard
+        
+          
+            return  this.$mediaCard
 
     }
 

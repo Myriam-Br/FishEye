@@ -42,7 +42,7 @@ class API {
                         //console.log(res.media);
                         const mediaOfPhotographer = []
                         let idPhotographer =JSON.parse(localStorage.getItem('id'))
-                        console.log(idPhotographer);
+                        //console.log(idPhotographer);
                         res.media.forEach(media => {
 
                             if(media.photographerId == idPhotographer){

@@ -1,0 +1,3 @@
+class PLayerModal {
+    constructor(Medias)
+}

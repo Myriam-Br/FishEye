@@ -1,5 +1,5 @@
-function mediaCardPlayer(Medias) {
-    console.log(Medias);
-
+function mediaCardPlayer() {
+    //console.log('params',Medias.$mediaCard.querySelector('.media_card'));
+console.log('works');
 
 }

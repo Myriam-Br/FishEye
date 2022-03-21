@@ -10,10 +10,13 @@ class PhotographerPage{
         this.$modalWrapperFormDisplay= document.getElementById('contact_modal') 
         
         this.mediaApi = new MediaApi('/data/photographers.json')
+        
+        this.mediaCardDiv = document.querySelector('.media_card')
+
         this.LikesSubjet = new LikesSubject()
         this.LikesCounter = new LikesCounter()
         this.LikesSubjet.like(this.LikesCounter)
-       // console.log(this.LikesCounter);
+       //console.log(this.LikesCounter);
 
             
     }
@@ -46,6 +49,7 @@ class PhotographerPage{
         this.$photographersWrapper.appendChild(
             Template.getUserCardDOM(photographerData)
         )
+
         this.$wrapper.appendChild(this.$photographersWrapper)
 
     
@@ -53,8 +57,10 @@ class PhotographerPage{
         const Medias = mediaData.map(media => new Media(media))
 
         const TemplateMedia = new DisplayMedia(Medias)
+        console.log(mediaCardPlayer(TemplateMedia.getMediaCardDOM()));
+
         this.$wrapper.appendChild(
-            TemplateMedia.getMediaCardDOM()     
+            TemplateMedia.getMediaCardDOM()   
         )
 
         // TEMPLATE FILTERS
