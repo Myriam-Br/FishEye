@@ -13,6 +13,9 @@ class LikesSubject {
     }
 
     fire(action) {
+        console.log('fire');
+
         this._observers.forEach(observer => observer.update(action))
+        
     }
 }

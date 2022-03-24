@@ -1,3 +1,9 @@
 class PLayerModal {
-    constructor(Medias)
+    constructor(Medias) {
+console.log(Medias);
+    }
+
+    playerModal() {
+
+    }
 }

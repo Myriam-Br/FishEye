@@ -16,7 +16,7 @@ class PhotographerPage{
         this.LikesSubjet = new LikesSubject()
         this.LikesCounter = new LikesCounter()
         this.LikesSubjet.like(this.LikesCounter)
-       //console.log(this.LikesCounter);
+    //console.log(this.LikesSubjet.like(this.LikesCounter));
 
             
     }
@@ -57,7 +57,7 @@ class PhotographerPage{
         const Medias = mediaData.map(media => new Media(media))
 
         const TemplateMedia = new DisplayMedia(Medias)
-        console.log(mediaCardPlayer(TemplateMedia.getMediaCardDOM()));
+        //console.log(mediaCardPlayer(TemplateMedia.getMediaCardDOM()));
 
         this.$wrapper.appendChild(
             TemplateMedia.getMediaCardDOM()   
@@ -71,6 +71,7 @@ class PhotographerPage{
         TemplateFilters.onChangeSorter()
       
   
+        
         //TEMPLATE TOTAL LIKES PER PHOTOGRAPHER
         const TemplateTotalLikes = new TotalLikesCard(Medias)
         this.$wrapper.appendChild(
