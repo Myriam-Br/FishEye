@@ -4,19 +4,32 @@ class DisplayMedia{
 
         //media card wrapper
         this.name = localStorage.getItem('name')
+
+        this.$main = document.getElementById('main')
+ 
         this.$mediaCard = document.createElement('div')
         this.$mediaCard.setAttribute('id', 'media_card_section')
+
+       this.$totalLikes = document.getElementById('total_likes_section')
         this.Medias = Medias
+
+      
     
        // console.log(document.getElementById('total_likes_ssection'));
     }
 
 
-   
+
 
     handleLikedButton(id) {
+        
         const that = this
         const el = that.$mediaCard.querySelector("[id='"+id+"']")
+        //console.log(el.querySelector('.like_count'));
+        let totalLikes  =   that.$totalLikes.querySelector('#total_likes')
+        let likeCount = el.querySelector('.like_count')
+        //console.log(totalLikes.innerHTML);
+
         //console.log(el.classList.add('likes'));
        // console.log(el);
        // console.log(this);
@@ -24,46 +37,60 @@ class DisplayMedia{
         el.addEventListener('click', function() {
   
                 //console.log(this.name);
-               if (el.classList.contains('liked')) { 
+               if (el.classList.contains('liked') &&  likeCount.classList.contains('liked') ) { 
    
                     el.classList.remove('liked') 
-                    let likeCount = this.querySelector('.like_count')        
+                    likeCount.classList.remove('liked')
+                    //console.log(likeCount);
+
                     let likeCountScore = likeCount.innerHTML     
                     let updateLikeCount = parseInt(likeCountScore) - 1
-
                     likeCount.innerHTML = updateLikeCount     
-                    console.log(el.querySelector('.like_count').innerHTML); 
+
+        
+                    totalLikes.innerHTML = parseInt(totalLikes.innerHTML) - 1
+                   
                 } 
+
                 
                 else {
                     el.classList.add('liked')
-                    let likeCount = this.querySelector('.like_count')
-                    //console.log(likeCount);  
+                    likeCount.classList.add('liked')
+
+                    //console.log(likeCount);
+
                     let likeCountScore = likeCount.innerHTML     
-                    let updateLikeCount = parseInt(likeCountScore) + 1
-                 
+                    let updateLikeCount = parseInt(likeCountScore) + 1  
                     likeCount.innerHTML = updateLikeCount  
-                    console.log(el.querySelector('.like_count').innerHTML);
+
+                    totalLikes.innerHTML = parseInt(totalLikes.innerHTML) + 1
                 }       
                 
-                console.log(el.querySelector('.like_count').innerHTML);
+                
+               // console.log(el.querySelector('.like_count').innerHTML);
+               // console.log(that.totalLikes);
        
-        })
-
+        }) 
     }
 
   
-
-
+/*
     playerModal(id) {
+
+      
         //console.log(id);
         const that = this
         const elt = that.$mediaCard.querySelector("[id='"+id+"']")
-        //console.log(elt);
+        console.log(elt);
+        console.log(that.$mediaCard);
+
+
+       /*
         elt.addEventListener('click',function() {
-            const mediaModal = document. createElement('div')
-            mediaModal.setAttribute('id', 'mediaModal')
             
+        const mediaModal = document.createElement('div')
+        mediaModal.setAttribute('id', 'mediaModal')
+           
                 const mediaCardModal = document.createElement('img')
                 mediaCardModal.setAttribute('src', elt.src.split("http://127.0.0.1:5501")[1])
                 //console.log('MEDIA',elt.src.split("http://127.0.0.1:5501")[1]);
@@ -82,26 +109,19 @@ class DisplayMedia{
                 })        
             }   
         )    
-    }
+    }*/
 
+   
 
-    totalLikes(){
-        console.log(this);
-        const that = this
-        console.log(that.$mediaCard.getElementsByClassName('like_count').length);
-        for(let i = 0; i < that.$mediaCard.getElementsByClassName('like_count').length; i++){
-            console.log(that.$mediaCard.getElementsByClassName('like_count')[i].innerHTML);
-        }
-        
-    }
     
-    getMediaCardDOM(){
+    getMediaCardDOM(Medias){
+        
         const that = this
         //console.log(that);
-        
+        console.log(Medias);
         this._name = this.name.substring(0, this.name.indexOf(' '));
         //console.log('NAME',this._name);
-        this.Medias.forEach(media => {
+        Medias.forEach(media => {
             
             const mediaCardDiv = document.createElement('div')
             mediaCardDiv.classList.add('media_card')
@@ -157,10 +177,11 @@ class DisplayMedia{
 
             
             this.handleLikedButton('btn_' + media.id)
-            this.playerModal('media' + media.id)
             
+            //this.playerModal(media.id)
         });
-            this.totalLikes()
+
+        
             return  this.$mediaCard
 
     }

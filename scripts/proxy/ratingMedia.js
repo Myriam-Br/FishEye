@@ -14,6 +14,8 @@ class RatingMedia {
                         data: Array.from(data).sort((a, b) => b.likes - a.likes)
                     }
 
+                    //console.log('RESULT',result);
+                 
                     resolve(result)
 
                 }, 1000)

@@ -13,9 +13,7 @@ class PhotographerPage{
         
         this.mediaCardDiv = document.querySelector('.media_card')
 
-        this.LikesSubjet = new LikesSubject()
-        this.LikesCounter = new LikesCounter()
-        this.LikesSubjet.like(this.LikesCounter)
+        
     //console.log(this.LikesSubjet.like(this.LikesCounter));
 
             
@@ -56,11 +54,18 @@ class PhotographerPage{
         //TEMPLATE MEDIA
         const Medias = mediaData.map(media => new Media(media))
 
-        const TemplateMedia = new DisplayMedia(Medias)
-        //console.log(mediaCardPlayer(TemplateMedia.getMediaCardDOM()));
+        //TEMPLATE TOTAL LIKES PER PHOTOGRAPHER
+        const TemplateTotalLikes = new TotalLikesCard(Medias, photographerData)
+        this.$wrapper.appendChild(
+            TemplateTotalLikes.totalLikesDom()
+        )
+
+        const TemplateMedia = new DisplayMedia()
+        //console.log(mediaCardPlayer(new DisplayMedia(Medias)));
+      
 
         this.$wrapper.appendChild(
-            TemplateMedia.getMediaCardDOM()   
+            mediaCardPlayer(TemplateMedia.getMediaCardDOM(Medias))   
         )
 
         // TEMPLATE FILTERS
@@ -71,13 +76,9 @@ class PhotographerPage{
         TemplateFilters.onChangeSorter()
       
   
+  
         
-        //TEMPLATE TOTAL LIKES PER PHOTOGRAPHER
-        const TemplateTotalLikes = new TotalLikesCard(Medias)
-        this.$wrapper.appendChild(
-            TemplateTotalLikes.totalLikesDom()
-        )
-
+     
     }
 }
 

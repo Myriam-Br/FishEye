@@ -27,14 +27,14 @@ class FilterSource{
 
             //console.log('SortedMedias', SortedMedias);
 
-                const Template = new DisplayMedia(SortedMedias)
-                this.$wrapper.appendChild(Template.getMediaCardDOM())
+                const Template = new DisplayMedia()
+                this.$wrapper.appendChild(mediaCardPlayer(Template.getMediaCardDOM(SortedMedias)))
         
 
         } else {
 
-                const Template = new DisplayMedia(Medias)
-                this.$wrapper.appendChild(Template.getMediaCardDOM())
+                const Template = new DisplayMedia()
+                this.$wrapper.appendChild(mediaCardPlayer(Template.getMediaCardDOM(Medias)))
           
         }
     }
@@ -54,8 +54,7 @@ class FilterSource{
     //clear media wrapper => to display sorted media
     clearMoviesWrapper() {
         this.$wrapper.innerHTML = " "
-        console.log(this.$wrapper);
-
+        
     }
     
 

@@ -180,7 +180,7 @@ form input {
     right: 0;  
 }
 
-.total_likes_section{
+#total_likes_section{
     border : solid black 4px;
     display: flex;
     justify-content: space-around;
@@ -188,33 +188,63 @@ form input {
     width: 40%;
     height: 50px;
     float: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 6;
 }
 
-#mediaModal{
-    display: block;
+#modal_player{
+    display: none;
+    background-color: aqua;
     position: fixed;
-    height: 800px;
     right: 0;
     left: 0;
     top: 0;
+    bottom: 0;
     margin: 100px 100px;
-    z-index: 3;
+    z-index: 5;
 
 
 }
 
-#mediaModal img{
+#modal_player img{
     position: relative;
-    height: 700px;
+    height: 500px;
     width: 100%;
-    object-fit: cover;
-    
+    object-fit: cover;  
+   
 }
 
-.close_btn{
+
+#btn_close_modal{
+    background-color: #901C1C;
+    width: 50px;
+    height: 50px;
+    position: absolute; 
+    right: 0;
+    z-index: 3;
+   
+}
+
+#btn_previous_media{
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 250px;
+    z-index: 3;
+}
+
+#btn_next_media{
+    background-color: rgb(9, 255, 0);
     width: 50px;
     height: 50px;
     position: absolute;
     right: 0;
-
+    bottom: 0;
+    margin-bottom: 250px;
+    z-index: 3;
 }
