@@ -74,10 +74,6 @@ class PhotographerPage{
         TemplateFilters.getFilterDOM()         
         )
         TemplateFilters.onChangeSorter()
-      
-  
-  
-        
      
     }
 }

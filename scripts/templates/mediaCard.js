@@ -73,47 +73,7 @@ class DisplayMedia{
         }) 
     }
 
-  
-/*
-    playerModal(id) {
 
-      
-        //console.log(id);
-        const that = this
-        const elt = that.$mediaCard.querySelector("[id='"+id+"']")
-        console.log(elt);
-        console.log(that.$mediaCard);
-
-
-       /*
-        elt.addEventListener('click',function() {
-            
-        const mediaModal = document.createElement('div')
-        mediaModal.setAttribute('id', 'mediaModal')
-           
-                const mediaCardModal = document.createElement('img')
-                mediaCardModal.setAttribute('src', elt.src.split("http://127.0.0.1:5501")[1])
-                //console.log('MEDIA',elt.src.split("http://127.0.0.1:5501")[1]);
-                //console.log(mediaCardModal);
- 
-                const close_btn = document.createElement('button')
-                close_btn.classList.add('close_btn')
-                                       
-                mediaModal.appendChild(mediaCardModal)
-                mediaModal.appendChild(close_btn)
-                that.$mediaCard.appendChild(mediaModal) 
-
-
-                close_btn.addEventListener('click', () => {
-                    mediaModal.style.display='none'
-                })        
-            }   
-        )    
-    }*/
-
-   
-
-    
     getMediaCardDOM(Medias){
         
         const that = this
@@ -138,6 +98,7 @@ class DisplayMedia{
                 const video = document.createElement('video')
                 video.setAttribute('controls', '')
                 video.classList.add('video')
+                video.setAttribute('aria-label', media.type.split('.mp4')[0])
                 const sourceVideo = document.createElement('source')
                 video.appendChild(sourceVideo)
                 sourceVideo.setAttribute('src',  `/media/${this._name}/${media.type}`)
@@ -153,12 +114,15 @@ class DisplayMedia{
             divTitleLikes.classList.add('title_likes')
     
             const title = document.createElement('h3')
+            title.setAttribute('aria-label', media.title)
+            title.setAttribute('class', 'media_title')
             title.innerHTML = media.title
     
             const likesCountButton = document.createElement('button')
 
             const likesIcon = document.createElement('i')
-            likesIcon.setAttribute('class', 'fa-solid fa-heart')
+            likesIcon.setAttribute('class','fa-solid fa-heart')
+            //console.log(likesIcon);
             const likesCount = document.createElement('p')
             likesCount.classList.add('like_count')
             likesCount.setAttribute('id','like_count' + media.id)
@@ -167,6 +131,7 @@ class DisplayMedia{
             //console.log(media.id);
             likesCountButton.setAttribute('class', 'btn-like')
             likesCountButton.setAttribute('id', 'btn_' + media.id)
+            likesCountButton.setAttribute('aria-label', 'bouton-like')
             likesCountButton.appendChild(likesIcon)
             likesCountButton.appendChild(likesCount)
             divTitleLikes.appendChild(title)
@@ -179,6 +144,7 @@ class DisplayMedia{
             this.handleLikedButton('btn_' + media.id)
             
             //this.playerModal(media.id)
+            
         });
 
         
