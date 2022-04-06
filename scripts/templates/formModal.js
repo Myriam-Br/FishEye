@@ -132,6 +132,8 @@ class ContactFormModal{
 
     createContactForm() {
 
+      this.$modalWrapper.setAttribute('aria-label',  "Contactez-moi" +" "+ localStorage.getItem('name'))
+
       if(localStorage.getItem('name') !== null) {
         this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
     

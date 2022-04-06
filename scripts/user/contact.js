@@ -9,10 +9,10 @@ class ContactForm{
             this._lastName = data.lastName
             this._email = data.email
             this._message = data.message
-            
-            
+                 
             ContactForm.instance = this
-            ContactForm.exists = true
+            ContactForm.exists = false
+
 
             this.saveToLocalStorage()
 

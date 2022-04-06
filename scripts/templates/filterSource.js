@@ -22,6 +22,7 @@ class FilterSource{
             const sortedData = await this.ProxyRatingMedia.sorter(this.Medias, sorter)
            
             //console.log('sortedData',sortedData);
+            
 
             const SortedMedias = sortedData.data
 
@@ -64,7 +65,7 @@ class FilterSource{
  
         const filterSectionLabel = document.createElement('label')
         filterSectionLabel.setAttribute('for', 'filters')
-        filterSectionLabel.innerHTML= "filtrer par : "
+        filterSectionLabel.innerHTML= "Trier par "
         
         const filterSection = document.createElement('select')
         filterSection.setAttribute('id', 'filters')
@@ -72,14 +73,17 @@ class FilterSource{
 
         const filter1 = document.createElement('option')
         filter1.setAttribute('value', ' ')
+        filter1.setAttribute('class', 'filter')
         filter1.innerHTML = " select "
 
         const filterPerDate = document.createElement('option')
         filterPerDate.setAttribute('value', 'popular')
+        filterPerDate.setAttribute('class', 'filter')
         filterPerDate.innerHTML = "popular"
 
         const filterPerTitle = document.createElement('option')
         filterPerTitle.setAttribute('value', 'title')
+        filterPerTitle.setAttribute('class', 'filter')
         filterPerTitle.innerHTML = "title"
 
         filterSection.appendChild(filter1)

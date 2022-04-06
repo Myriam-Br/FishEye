@@ -30,6 +30,10 @@ class TotalLikesCard{
         totalLikesSection.setAttribute('id','total_likes')
         totalLikesSection.innerHTML = totalLikes.reduce(reducer)
 
+        const likesIcon = document.createElement('i')
+        likesIcon.setAttribute('class','fa fa-heart')
+    
+
         const price = document.createElement('p')
         price.classList.add('price')
         price.innerHTML = this.photographer.price + '€' + '/' + 'jour'
@@ -37,6 +41,7 @@ class TotalLikesCard{
 
 
         this.$wrapper.appendChild(totalLikesSection)
+        this.$wrapper.appendChild(likesIcon)
         this.$wrapper.appendChild(price)
 
        

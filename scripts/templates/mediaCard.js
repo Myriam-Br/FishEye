@@ -30,9 +30,6 @@ class DisplayMedia{
         let likeCount = el.querySelector('.like_count')
         //console.log(totalLikes.innerHTML);
 
-        //console.log(el.classList.add('likes'));
-       // console.log(el);
-       // console.log(this);
     
         el.addEventListener('click', function() {
   
@@ -47,12 +44,12 @@ class DisplayMedia{
                     let updateLikeCount = parseInt(likeCountScore) - 1
                     likeCount.innerHTML = updateLikeCount     
 
-        
+                    el.querySelector('.like_count').style.color='black'
+                    el.querySelector('.like_count').style.fontWeight='normal'
                     totalLikes.innerHTML = parseInt(totalLikes.innerHTML) - 1
                    
                 } 
-
-                
+            
                 else {
                     el.classList.add('liked')
                     likeCount.classList.add('liked')
@@ -62,7 +59,9 @@ class DisplayMedia{
                     let likeCountScore = likeCount.innerHTML     
                     let updateLikeCount = parseInt(likeCountScore) + 1  
                     likeCount.innerHTML = updateLikeCount  
-
+                    el.querySelector('.like_count').style.color='#901C1C'
+                    el.querySelector('.like_count').style.fontWeight='bold'
+                    
                     totalLikes.innerHTML = parseInt(totalLikes.innerHTML) + 1
                 }       
                 
@@ -71,6 +70,10 @@ class DisplayMedia{
                // console.log(that.totalLikes);
        
         }) 
+    }
+
+    totalLikes(){
+
     }
 
 
@@ -121,7 +124,7 @@ class DisplayMedia{
             const likesCountButton = document.createElement('button')
 
             const likesIcon = document.createElement('i')
-            likesIcon.setAttribute('class','fa-solid fa-heart')
+            likesIcon.setAttribute('class','fa fa-heart')
             //console.log(likesIcon);
             const likesCount = document.createElement('p')
             likesCount.classList.add('like_count')
@@ -132,8 +135,9 @@ class DisplayMedia{
             likesCountButton.setAttribute('class', 'btn-like')
             likesCountButton.setAttribute('id', 'btn_' + media.id)
             likesCountButton.setAttribute('aria-label', 'bouton-like')
-            likesCountButton.appendChild(likesIcon)
             likesCountButton.appendChild(likesCount)
+            likesCountButton.appendChild(likesIcon)
+           
             divTitleLikes.appendChild(title)
             divTitleLikes.appendChild(likesCountButton)
 
@@ -142,6 +146,7 @@ class DisplayMedia{
 
             
             this.handleLikedButton('btn_' + media.id)
+            this.totalLikes()
             
             //this.playerModal(media.id)
             

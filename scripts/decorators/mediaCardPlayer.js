@@ -48,7 +48,7 @@ modalPlayer.appendChild(videoModal)
 
 
 btnNext.addEventListener('click', () => {
-    console.log('next');
+    //console.log('next');
     
     let id_media = modalPlayer.getAttribute('id_media')
 
@@ -87,7 +87,7 @@ btnNext.addEventListener('click', () => {
 
 
 btnPrevious.addEventListener('click', () => {
-    console.log('previous');
+    //console.log('previous');
     let id_media = modalPlayer.getAttribute('id_media')
 
     id_media = parseInt(id_media) - 1
@@ -126,7 +126,7 @@ for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
    const n = Medias.getElementsByClassName('media_card').length
    Medias.getElementsByClassName('media_card')[i].setAttribute('id_media', i)
 
-   console.log(Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML);
+  // console.log(Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML);
 
   // console.log(Medias.getElementsByClassName('media_card')[i]);
    // console.log(n);

@@ -47,7 +47,7 @@ class PhotographerPage{
         this.$photographersWrapper.appendChild(
             Template.getUserCardDOM(photographerData)
         )
-
+     
         this.$wrapper.appendChild(this.$photographersWrapper)
 
     
