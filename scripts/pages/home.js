@@ -2,7 +2,7 @@ class Home {
     constructor() {
     console.log(window.location.origin);
         //récupération de l'api
-        this.photographersApi = new PhotographerApi('/data/photographers.json')
+        this.photographersApi = new PhotographerApi(window.location.origin + '/data/photographers.json')
 
         //target élément DOM 
         this.$wrapper = document.getElementById('main')
