@@ -7,6 +7,10 @@ class PhotographerCard{
 
     }
 
+    keyEventIndex(){
+        console.log(this);
+    }
+
     getUserCardDOM() {      
 
         this.$cardPhotographer.setAttribute('aria-label', this.photographer.name +' '+ 'card')
@@ -49,7 +53,6 @@ class PhotographerCard{
         this.$cardPhotographer.appendChild(tagline)
         this.$cardPhotographer.appendChild(price)
 
-      
     
         return this.$cardPhotographer;
     }

@@ -69,7 +69,7 @@ class FilterSource{
         
         const filterSection = document.createElement('select')
         filterSection.setAttribute('id', 'filters')
-        filterSection.setAttribute('aria-label', 'selectionner filtre')
+        filterSection.setAttribute('aria-label', 'Order by')
 
         const filter1 = document.createElement('option')
         filter1.setAttribute('value', ' ')

@@ -132,13 +132,16 @@ class ContactFormModal{
 
     createContactForm() {
 
-      this.$modalWrapper.setAttribute('aria-label',  "Contactez-moi" +" "+ localStorage.getItem('name'))
+      
+      
 
       if(localStorage.getItem('name') !== null) {
         this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
     
+        
+       this.$modalWrapper.setAttribute('aria-label',  "Contact me" +" "+ localStorage.getItem('name'))
+    
         const formContact = document.createElement('form')
-
         ////////////////firstName
         const firstNameDiv = document.createElement('div')
         firstNameDiv.classList.add('firstName_section')
@@ -148,7 +151,7 @@ class ContactFormModal{
         const firstName = document.createElement('input')
         firstName.setAttribute('id', 'firstName')
 
-        firstNameLabel.innerHTML = "Prénom"   
+        firstNameLabel.innerHTML = "First name"   
 
         let errorFirstName = document.createElement('p')
         errorFirstName.setAttribute('class', 'error_firstName_input')
@@ -167,7 +170,7 @@ class ContactFormModal{
         const lastNameLabel = document.createElement('label')
         lastNameLabel.setAttribute('for', 'lastName')
 
-        lastNameLabel.innerHTML = "Nom"   
+        lastNameLabel.innerHTML = "Last name"   
 
         let errorLastName = document.createElement('p')
         errorLastName.setAttribute('class', 'error_lastName_input')
@@ -207,12 +210,12 @@ class ContactFormModal{
         const messageDiv = document.createElement('div')
         messageDiv.classList.add('message_section')
 
-        const message = document.createElement('input')
+        const message = document.createElement('textarea')
         message.setAttribute('id', 'message')
         const messageLabel = document.createElement('label')
         messageLabel.setAttribute('for', 'message')
 
-        messageLabel.innerHTML="Message"
+        messageLabel.innerHTML="Your message"
 
         let errorMessageSection = document.createElement('p')
         errorMessageSection.setAttribute('class', 'error_message_input')
@@ -226,6 +229,7 @@ class ContactFormModal{
         ///////button submit
         const btnSubmit = document.createElement('button')
         btnSubmit.classList.add('btn_submit')
+        btnSubmit.setAttribute('aria-label', 'Send')
         btnSubmit.innerHTML = "Envoyer"
 
         formContact.appendChild(firstNameDiv)
@@ -242,6 +246,8 @@ class ContactFormModal{
 
         
 
+
+      }else {
 
       }
     }

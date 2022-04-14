@@ -45,6 +45,7 @@ class DisplayMedia{
                     likeCount.innerHTML = updateLikeCount     
 
                     el.querySelector('.like_count').style.color='black'
+                    el.querySelector('.fa').style.color='black'
                     el.querySelector('.like_count').style.fontWeight='normal'
                     totalLikes.innerHTML = parseInt(totalLikes.innerHTML) - 1
                    
@@ -60,6 +61,7 @@ class DisplayMedia{
                     let updateLikeCount = parseInt(likeCountScore) + 1  
                     likeCount.innerHTML = updateLikeCount  
                     el.querySelector('.like_count').style.color='#901C1C'
+                    el.querySelector('.fa').style.color='#901C1C'
                     el.querySelector('.like_count').style.fontWeight='bold'
                     
                     totalLikes.innerHTML = parseInt(totalLikes.innerHTML) + 1
@@ -70,11 +72,10 @@ class DisplayMedia{
                // console.log(that.totalLikes);
        
         }) 
-    }
-
-    totalLikes(){
 
     }
+
+ 
 
 
     getMediaCardDOM(Medias){
@@ -95,6 +96,7 @@ class DisplayMedia{
                 image.setAttribute('id', 'media' + media.id)
                 image.setAttribute('src', `/media/${this._name}/${media.type}`)
                 image.setAttribute('alt', media.type.split('.jpg')[0])
+                image.setAttribute('tabindex', '2')
                 mediaCardDiv.appendChild(image)
     
             }else if(media._video) {
@@ -125,6 +127,7 @@ class DisplayMedia{
 
             const likesIcon = document.createElement('i')
             likesIcon.setAttribute('class','fa fa-heart')
+            likesIcon.setAttribute('aira-label','likes')
             //console.log(likesIcon);
             const likesCount = document.createElement('p')
             likesCount.classList.add('like_count')
@@ -134,7 +137,7 @@ class DisplayMedia{
             //console.log(media.id);
             likesCountButton.setAttribute('class', 'btn-like')
             likesCountButton.setAttribute('id', 'btn_' + media.id)
-            likesCountButton.setAttribute('aria-label', 'bouton-like')
+            likesCountButton.setAttribute('aria-label', 'like button')
             likesCountButton.appendChild(likesCount)
             likesCountButton.appendChild(likesIcon)
            
@@ -146,8 +149,7 @@ class DisplayMedia{
 
             
             this.handleLikedButton('btn_' + media.id)
-            this.totalLikes()
-            
+           
             //this.playerModal(media.id)
             
         });

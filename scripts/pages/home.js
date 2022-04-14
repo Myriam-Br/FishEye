@@ -1,5 +1,6 @@
 class Home {
     constructor() {
+    console.log(window.location.origin);
         //récupération de l'api
         this.photographersApi = new PhotographerApi('/data/photographers.json')
 
@@ -13,6 +14,7 @@ class Home {
 
     
     async main() {
+
         const photographersData = await this.photographersApi.get()
        console.log("apirécup", photographersData);
        const Photographers = photographersData.map(photographer => new Photographer(photographer))
@@ -23,6 +25,7 @@ class Home {
         //creation card pour chaque photographer
             this.$photographerCard.appendChild(
                 Template.getUserCardDOM()   
+                 
             )  
         });
 

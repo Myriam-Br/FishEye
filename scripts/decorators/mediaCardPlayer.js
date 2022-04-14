@@ -46,8 +46,14 @@ modalPlayer.appendChild(closeBtn)
 modalPlayer.appendChild(imageModal)
 modalPlayer.appendChild(videoModal)
 
+//accessibility
+modalPlayer.setAttribute('aria-label', 'image closeup view')
+btnPrevious.setAttribute('aria-label', 'Previous image')
+btnNext.setAttribute('aria-label', 'Next image')
+closeBtn.setAttribute('aria-label', 'Close dialog')
 
-btnNext.addEventListener('click', () => {
+
+btnNext.addEventListener('click', () => {   
     //console.log('next');
     
     let id_media = modalPlayer.getAttribute('id_media')
@@ -85,6 +91,36 @@ btnNext.addEventListener('click', () => {
 
 })
 
+console.log('cards', Medias.getElementsByClassName('media_card'));
+console.log( 'cards section', mainWrapper);
+
+/*
+mainWrapper.addEventListener('keydown', e => {
+    console.log(e); 
+    if(e.keyCode === 9 ){
+
+        let id_media =  Medias.querySelector('.media_card').getAttribute('id_media')
+        console.log(id_media);
+        id_media = parseInt(id_media) + 1
+        if(id_media == n ) {
+            id_media = 0
+        }
+    
+        console.log(Medias.querySelector("[id_media='"+id_media+"']"))
+       // Medias.querySelector("[id_media='"+id_media+"']").style.border='solid'
+        Medias.querySelector('.media_card').setAttribute('id_media', id_media)
+        Medias.querySelector("[id_media='"+id_media+"']").style.border='solid'
+
+        if(e.keyCode === 13){
+
+            modalPlayer.style.display='block'
+            console.log(modalPlayer);
+
+        }
+    }
+
+
+})*/
 
 btnPrevious.addEventListener('click', () => {
     //console.log('previous');
@@ -119,6 +155,10 @@ btnPrevious.addEventListener('click', () => {
         videoModal.setAttribute('src', srcPrevious)
     }
 })
+
+
+
+
 
 
 
@@ -184,8 +224,12 @@ for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
                 modalPlayer.appendChild(mediaTypeModal)
         })
 
-       
-
+        mediaType.addEventListener('keydown', e => {
+            console.log(e);
+            if(e.keyCode ===13){
+                mediaType.click()
+            }
+        })
     }
 
     } 

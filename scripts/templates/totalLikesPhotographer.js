@@ -1,5 +1,5 @@
 class TotalLikesCard{
-    constructor(Medias, photographer) {
+    constructor(Medias, photographer ) {
         this.$wrapper = document.createElement('div')
         this.$wrapper.setAttribute('id','total_likes_section')
         this.Medias = Medias

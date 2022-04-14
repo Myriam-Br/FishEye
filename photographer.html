@@ -16,7 +16,7 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>  
       
    
@@ -27,7 +27,7 @@
 			<div class="modal">
 				<header>
           <h2 id="contact_title">Contactez-moi</h2>
-          <img id="close_modal_contact" src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer modal contact"/>
+          <img id="close_modal_contact" src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form"/>
         </header>     	  	
 			</div> 	
 		</div>
@@ -38,8 +38,9 @@
    
 
     <!--Utils-->
-    <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/templates/formModal.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    
 
     <!--Decorators-->
     <script src="scripts/decorators/logoBackToHome.js"></script>
