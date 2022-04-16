@@ -118,6 +118,8 @@ class ContactFormModal{
           //fermer modal contact
           this.clearForm()
 
+       
+
           return true
         } else{
 
@@ -131,9 +133,6 @@ class ContactFormModal{
 
 
     createContactForm() {
-
-      
-      
 
       if(localStorage.getItem('name') !== null) {
         this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
@@ -242,23 +241,16 @@ class ContactFormModal{
         this.$wrapper.appendChild(formContact)
         this.$modalWrapper.appendChild(this.$wrapper)
 
-        this.onSubmitForm()
-
         
-
+        this.onSubmitForm()
 
       }else {
 
       }
     }
 
-
     render(){
-        
-  
-        this.createContactForm()
-
-        
+      this.createContactForm()
     }
     
 }

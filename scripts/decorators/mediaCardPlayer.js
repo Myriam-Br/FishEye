@@ -91,36 +91,6 @@ btnNext.addEventListener('click', () => {
 
 })
 
-console.log('cards', Medias.getElementsByClassName('media_card'));
-console.log( 'cards section', mainWrapper);
-
-/*
-mainWrapper.addEventListener('keydown', e => {
-    console.log(e); 
-    if(e.keyCode === 9 ){
-
-        let id_media =  Medias.querySelector('.media_card').getAttribute('id_media')
-        console.log(id_media);
-        id_media = parseInt(id_media) + 1
-        if(id_media == n ) {
-            id_media = 0
-        }
-    
-        console.log(Medias.querySelector("[id_media='"+id_media+"']"))
-       // Medias.querySelector("[id_media='"+id_media+"']").style.border='solid'
-        Medias.querySelector('.media_card').setAttribute('id_media', id_media)
-        Medias.querySelector("[id_media='"+id_media+"']").style.border='solid'
-
-        if(e.keyCode === 13){
-
-            modalPlayer.style.display='block'
-            console.log(modalPlayer);
-
-        }
-    }
-
-
-})*/
 
 btnPrevious.addEventListener('click', () => {
     //console.log('previous');
@@ -160,7 +130,10 @@ btnPrevious.addEventListener('click', () => {
 
 
 
-
+console.log(modalPlayer);
+modalPlayer.addEventListener('keydown', e => {
+    console.log('works');
+})
 
 for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
    const n = Medias.getElementsByClassName('media_card').length
@@ -195,42 +168,48 @@ for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
  
     //console.log(i);
    
-    if(mediaType) {
-        
-        mediaType.addEventListener('click', () => {
-            modalPlayer.style.display='block'
-            modalPlayer.setAttribute('id_media', i)  
+        if(mediaType) {
+            
+            mediaType.addEventListener('click', () => {
+                modalPlayer.style.display='block'
+                modalPlayer.setAttribute('id_media', i)  
+
+                
+                let srcOnClick = ''
+                if(mediaType == video) {
+                
+                    imageModal.style.display = 'none'   
+                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('source').src.split('http://127.0.0.1:5501')[1]             
+                }else {
+                    
+                    videoModal.style.display = 'none'
+                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('img').src.split('http://127.0.0.1:5501')[1]             
+                }
+
+                    mediaTypeModal.setAttribute('src', srcOnClick)
+                    
+                    mediaTypeModal.setAttribute('id', 'modal_image_player')         
+                    mediaTypeModal.setAttribute('id_media', i)  
+                    modalPlayer.appendChild(mediaTypeModal)
+            })
+
 
             
-            let srcOnClick = ''
-            if(mediaType == video) {
-               
-                imageModal.style.display = 'none'   
-                srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('source').src.split('http://127.0.0.1:5501')[1]             
-            }else {
-              
-                videoModal.style.display = 'none'
-                srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('img').src.split('http://127.0.0.1:5501')[1]             
-            }
-
-            //console.log(mediaType);
-        
-            //console.log(mediaType.querySelector('source').getAttribute('src'));
-          
-                mediaTypeModal.setAttribute('src', srcOnClick)
+            //accessibility media player open/close player ; next/previous media
+            mediaType.addEventListener('keydown', e => {
+                if(e.keyCode ===13){
+                    mediaType.click()
+                } else if(e.keyCode ===27){
+                    closeBtn.click()
+                }else if(e.keyCode ===39){
+                    btnNext.click()
+                }else if(e.keyCode === 37){
+                    btnPrevious.click()
+                }else {
                 
-                mediaTypeModal.setAttribute('id', 'modal_image_player')         
-                mediaTypeModal.setAttribute('id_media', i)  
-                modalPlayer.appendChild(mediaTypeModal)
-        })
-
-        mediaType.addEventListener('keydown', e => {
-            console.log(e);
-            if(e.keyCode ===13){
-                mediaType.click()
-            }
-        })
-    }
+                }
+            })
+        }
 
     } 
    
@@ -240,8 +219,9 @@ for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
         videoModal.style.display = 'block'
         imageModal.style.display = 'block'
     })
+
+
    
-//console.log(Medias.querySelector('.media_card'));
 
 mainWrapper.appendChild(modalPlayer)
 

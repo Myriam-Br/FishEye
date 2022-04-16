@@ -75,6 +75,23 @@ class DisplayMedia{
 
     }
 
+    tabIndexMedia(){
+   
+        console.log(this.$mediaCard.getElementsByClassName('media_card'));
+        console.log(this.$mediaCard.querySelector('.media_card'));
+        let mediaCardSection = this.$mediaCard.getElementsByClassName('media_card')
+        let indexTab = 2
+        for (let i=0; i < mediaCardSection.length; i++){
+            //console.log(mediaCardSection[i].querySelector('.btn-like'));
+            //console.log(mediaCardSection[i].querySelector('.media'));
+            
+            mediaCardSection[i].querySelector('.media').setAttribute('tabindex', indexTab+(i*2)-1)
+            mediaCardSection[i].querySelector('.btn-like').setAttribute('tabindex', indexTab+(i*2))
+            console.log( mediaCardSection[i].querySelector('.media').getAttribute('tabindex'));
+            console.log( mediaCardSection[i].querySelector('.btn-like').getAttribute('tabindex'));
+        }
+    }
+
  
 
 
@@ -96,12 +113,13 @@ class DisplayMedia{
                 image.setAttribute('id', 'media' + media.id)
                 image.setAttribute('src', `/media/${this._name}/${media.type}`)
                 image.setAttribute('alt', media.type.split('.jpg')[0])
-                image.setAttribute('tabindex', '2')
+                image.setAttribute('class', 'media')
                 mediaCardDiv.appendChild(image)
     
             }else if(media._video) {
                 const video = document.createElement('video')
                 video.setAttribute('controls', '')
+                video.setAttribute('class', 'media')
                 video.classList.add('video')
                 video.setAttribute('aria-label', media.type.split('.mp4')[0])
                 const sourceVideo = document.createElement('source')
@@ -150,11 +168,14 @@ class DisplayMedia{
             
             this.handleLikedButton('btn_' + media.id)
            
+            
+            
             //this.playerModal(media.id)
             
         });
 
-        
+             this.tabIndexMedia()
+
             return  this.$mediaCard
 
     }
