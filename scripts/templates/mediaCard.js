@@ -13,7 +13,8 @@ class DisplayMedia{
        this.$totalLikes = document.getElementById('total_likes_section')
         this.Medias = Medias
 
-      
+        console.log(document.querySelector('.photographer_card'));
+        this.$photographerHeader = document.querySelector('.photographer_card')
     
        // console.log(document.getElementById('total_likes_ssection'));
     }
@@ -80,7 +81,7 @@ class DisplayMedia{
         console.log(this.$mediaCard.getElementsByClassName('media_card'));
         console.log(this.$mediaCard.querySelector('.media_card'));
         let mediaCardSection = this.$mediaCard.getElementsByClassName('media_card')
-        let indexTab = 2
+        let indexTab = 5
         for (let i=0; i < mediaCardSection.length; i++){
             //console.log(mediaCardSection[i].querySelector('.btn-like'));
             //console.log(mediaCardSection[i].querySelector('.media'));
@@ -96,10 +97,17 @@ class DisplayMedia{
 
 
     getMediaCardDOM(Medias){
+
+
         
         const that = this
         //console.log(that);
-        console.log(Medias);
+
+        //remove tabindex from photographer header
+        this.$photographerHeader.removeAttribute('tabindex')
+        console.log(this.$photographerHeader);
+
+     
         this._name = this.name.substring(0, this.name.indexOf(' '));
         //console.log('NAME',this._name);
         Medias.forEach(media => {

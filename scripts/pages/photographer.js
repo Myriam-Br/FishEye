@@ -62,8 +62,6 @@ class PhotographerPage{
 
         const TemplateMedia = new DisplayMedia()
         //console.log(mediaCardPlayer(new DisplayMedia(Medias)));
-      
-
         this.$wrapper.appendChild(
             mediaCardPlayer(TemplateMedia.getMediaCardDOM(Medias))   
         )

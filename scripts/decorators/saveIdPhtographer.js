@@ -9,7 +9,16 @@ function cardPhotographer(photographer){
   
             window.location.assign("photographer.html")
 
-        } )   
+        } )  
+
+      photographer.$cardPhotographer.addEventListener('keydown', e => {
+          console.log(e);
+          if(e.keyCode === 13) {
+            photographer.$cardPhotographer.click()
+          }
+      })
+        
+        
     
         return photographer
 }

@@ -11,7 +11,7 @@ class PhotographerCard{
     getUserCardDOM() {      
 
         this.$cardPhotographer.setAttribute('aria-label', this.photographer.name +' '+ 'card')
-
+        this.$cardPhotographer.setAttribute('tabindex', '2')
         //portrait pic
         const img = document.createElement( 'img' );
         img.classList.add('pfp')
