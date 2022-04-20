@@ -70,7 +70,7 @@ class FilterSource{
         const filterSection = document.createElement('select')
         filterSection.setAttribute('id', 'filters')
         filterSection.setAttribute('aria-label', 'Order by')
-        filterSection.setAttribute('tabindex', '3')
+        filterSection.setAttribute('tabindex', '8')
 
         const filter1 = document.createElement('option')
         filter1.setAttribute('value', ' ')

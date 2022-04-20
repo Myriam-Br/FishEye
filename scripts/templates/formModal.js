@@ -4,18 +4,30 @@ class ContactFormModal{
       this.$wrapper = document.createElement('div')
       this.$contactModal = document.getElementById('contact_modal')
       this.$modalWrapper= document.querySelector('.modal') 
-      this.$h2 = document.getElementById('contact_title')          
+      this.$h2 = document.getElementById('contact_title') 
+             
     }
 
     clearForm(){
-      console.log(this.$wrapper.querySelector('form').querySelectorAll('input').length);
+      //console.log(this.$wrapper.querySelector('form').querySelectorAll('input').length);
       for (let i = 0 ; i < this.$wrapper.querySelector('form').querySelectorAll('input').length; i++) {
-        console.log(this.$wrapper.querySelector('form').querySelectorAll('input')[i].value);
+       // console.log(this.$wrapper.querySelector('form').querySelectorAll('input')[i].value);
         this.$wrapper.querySelector('form').querySelectorAll('input')[i].value = ''  
       }
-      console.log(this.$modalWrapper);
+      //console.log(this.$modalWrapper);
       this.$contactModal.style.display='none'
 
+    }
+
+    closeFormKeyBoard(){
+
+      this.$contactModal.addEventListener('keydown', e => {
+        if(this.$contactModal.classList.contains('active')){
+          if(e.keyCode === 27){
+            this.$contactModal.style.display='none'
+          }
+        }     
+      })
     }
 
     onSubmitForm() {
@@ -117,6 +129,7 @@ class ContactFormModal{
 
           //fermer modal contact
           this.clearForm()
+          
 
        
 
@@ -134,11 +147,12 @@ class ContactFormModal{
 
     createContactForm() {
 
-      if(localStorage.getItem('name') !== null) {
+   
         this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
     
-        
-       this.$modalWrapper.setAttribute('aria-label',  "Contact me" +" "+ localStorage.getItem('name'))
+        this.$modalWrapper.setAttribute('aria-label',  "Contact me" +" "+ localStorage.getItem('name'))
+       
+     
     
         const formContact = document.createElement('form')
         ////////////////firstName
@@ -149,6 +163,7 @@ class ContactFormModal{
         firstNameLabel.setAttribute('for', 'firstName')
         const firstName = document.createElement('input')
         firstName.setAttribute('id', 'firstName')
+        firstName.setAttribute('tabindex', '3')
 
         firstNameLabel.innerHTML = "First name"   
 
@@ -166,6 +181,7 @@ class ContactFormModal{
 
         const lastName = document.createElement('input')
         lastName.setAttribute('id', 'lastName')
+        lastName.setAttribute('tabindex', '4')
         const lastNameLabel = document.createElement('label')
         lastNameLabel.setAttribute('for', 'lastName')
 
@@ -189,6 +205,7 @@ class ContactFormModal{
         
         const email = document.createElement('input')
         email.setAttribute('id', 'email')
+        email.setAttribute('tabindex', '5')
         const emailLabel = document.createElement('label')
         emailLabel.setAttribute('for', 'email')
 
@@ -211,6 +228,7 @@ class ContactFormModal{
 
         const message = document.createElement('textarea')
         message.setAttribute('id', 'message')
+        message.setAttribute('tabindex', '6')
         const messageLabel = document.createElement('label')
         messageLabel.setAttribute('for', 'message')
 
@@ -229,6 +247,7 @@ class ContactFormModal{
         const btnSubmit = document.createElement('button')
         btnSubmit.classList.add('btn_submit')
         btnSubmit.setAttribute('aria-label', 'Send')
+        btnSubmit.setAttribute('tabindex', '7')
         btnSubmit.innerHTML = "Envoyer"
 
         formContact.appendChild(firstNameDiv)
@@ -240,14 +259,16 @@ class ContactFormModal{
   
         this.$wrapper.appendChild(formContact)
         this.$modalWrapper.appendChild(this.$wrapper)
+        
 
         
         this.onSubmitForm()
+        this.closeFormKeyBoard()
 
-      }else {
-
-      }
+     
     }
+
+    
 
     render(){
       this.createContactForm()

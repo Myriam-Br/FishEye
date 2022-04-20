@@ -4,6 +4,7 @@ class PhotographerCard{
         this.$cardPhotographer= document.createElement('article')
         this.$cardPhotographer.classList.add('photographer_card')
        //console.log(this.photographer.name);
+    
 
     }
 
