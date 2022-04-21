@@ -1,6 +1,8 @@
 class API {
     constructor(url) {
-        this._url = url
+        this._url =  url
+        console.log(this._url);
+        console.log(window.location.href);
     }
 
 
@@ -35,6 +37,7 @@ class API {
         return  fetch(this._url) 
                     .then(res => res.json())
                     .then(res => {
+                       
                         res.media
                         //console.log(res.media);
                         const mediaOfPhotographer = []
