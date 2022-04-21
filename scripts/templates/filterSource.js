@@ -38,6 +38,9 @@ class FilterSource{
                 this.$wrapper.appendChild(mediaCardPlayer(Template.getMediaCardDOM(Medias)))
           
         }
+
+        console.log(document.getElementById('total_likes'));
+        console.log(document.getElementById('total_likes').dispatchEvent(new Event ('update')));
     }
 
     //select option filter

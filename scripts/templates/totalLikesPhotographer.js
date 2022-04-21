@@ -30,6 +30,13 @@ class TotalLikesCard{
         totalLikesSection.setAttribute('id','total_likes')
         totalLikesSection.innerHTML = totalLikes.reduce(reducer)
 
+
+        //changement filtre recupère like base
+        totalLikesSection.addEventListener('update', e => {
+            console.log(e.target);
+            e.target.innerHTML = totalLikes.reduce(reducer)
+        })
+
         const likesIcon = document.createElement('i')
         likesIcon.setAttribute('class','fa fa-heart')
     

@@ -2,7 +2,7 @@
 class PhotographerPage{
 
     constructor() {
-        this.photographersApi = new PhotographerApi('/data/photographers.json')
+        this.photographersApi = new PhotographerApi(window.location.href +'/data/photographers.json')
         this.$photographersWrapper = document.querySelector('.photograph-header')
         this.$wrapper = document.getElementById('main')
 

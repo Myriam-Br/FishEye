@@ -106,7 +106,9 @@ class DisplayMedia{
 
         //remove tabindex from photographer header
         this.$photographerHeader.removeAttribute('tabindex')
-       // console.log(this.$photographerHeader);
+       // console.log(this.$photographerHeader)
+
+       
 
      
         this._name = this.name.substring(0, this.name.indexOf(' '));
