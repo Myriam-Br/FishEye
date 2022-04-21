@@ -1,39 +1,27 @@
 class Home {
-    constructor() {
+    constructor () {
+    // récupération de l'api
+        this.photographersApi = new PhotographerApi('/data/photographers.json')
 
-        //à remettre pour la page en ligne
-    console.log(window.location.origin);
-        //récupération de l'api
-        this.photographersApi = new PhotographerApi(window.location.href+'/data/photographers.json')
-
-        //target élément DOM 
+    // target élément DOM
         this.$wrapper = document.getElementById('main')
-
         this.$photographerCard = document.createElement('div')
         this.$photographerCard.setAttribute('id', 'photographer_section')
-       
     }
 
-    
-    async main() {
-
+    async main () {
         const photographersData = await this.photographersApi.get()
-       console.log("apirécup", photographersData);
-       const Photographers = photographersData.map(photographer => new Photographer(photographer))
-        //console.log('photographersTab',Photographers );
+        // console.log("apirécup", photographersData);
+        const Photographers = photographersData.map(photographer => new Photographer(photographer))
 
+        // creation card pour chaque photographer
         Photographers.forEach(photographer => {
             const Template = cardPhotographer(new PhotographerCard(photographer))
-        //creation card pour chaque photographer
             this.$photographerCard.appendChild(
-                Template.getUserCardDOM()   
-                 
-            )  
-        });
-
+                Template.getUserCardDOM()
+            )
+        })
         this.$wrapper.appendChild(this.$photographerCard)
-
-        
     }
 }
 

@@ -1,7 +1,6 @@
-function mediaCardPlayer(Medias) {
-
+function mediaCardPlayer (Medias) {
 const mainWrapper = document.getElementById('main')
-let modalPlayer = document.createElement('div')
+const modalPlayer = document.createElement('div')
 modalPlayer.setAttribute('id', 'modal_player')
 
 const btnNext = document.createElement('button')
@@ -19,24 +18,19 @@ closeBtn.setAttribute('id', 'btn_close_modal')
 closeBtn.setAttribute('aria-label', 'fermer modal image')
 closeBtn.innerHTML = 'X'
 
-
-let imageModal = document.createElement('img')
+const imageModal = document.createElement('img')
 imageModal.classList.add('IMAGE')
 imageModal.classList.add('media_modal')
 
-
-let videoModal = document.createElement('video')
+const videoModal = document.createElement('video')
 videoModal.setAttribute('controls', '')
 videoModal.classList.add('VIDEO')
 videoModal.classList.add('media_modal')
 
-let videoSource = document.createElement('source')
+const videoSource = document.createElement('source')
 videoSource.setAttribute('type', 'video/mp4')
 
 videoModal.appendChild(videoSource)
-
-
-
 
 const n = Medias.getElementsByClassName('media_card').length
 
@@ -46,186 +40,138 @@ modalPlayer.appendChild(closeBtn)
 modalPlayer.appendChild(imageModal)
 modalPlayer.appendChild(videoModal)
 
-//accessibility
+// accessibility
 modalPlayer.setAttribute('aria-label', 'image closeup view')
 btnPrevious.setAttribute('aria-label', 'Previous image')
 btnNext.setAttribute('aria-label', 'Next image')
 closeBtn.setAttribute('aria-label', 'Close dialog')
 
+btnNext.addEventListener('click', () => {
+    // console.log('next');
 
-btnNext.addEventListener('click', () => {   
-    //console.log('next');
-    
-    let id_media = modalPlayer.getAttribute('id_media')
+    let idMedia = modalPlayer.getAttribute('idMedia')
 
-    id_media = parseInt(id_media) + 1
-    if(id_media == n ) {
-        id_media = 0
+    idMedia = parseInt(idMedia) + 1
+    if (idMedia == n) {
+        idMedia = 0
     }
 
-    modalPlayer.setAttribute('id_media', id_media)
+    modalPlayer.setAttribute('idMedia', idMedia)
 
-    
-    let imgNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('img')
-    let videoNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('source')  
+    const imgNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('img')
+    const videoNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('source')
     let srcNext = ''
 
     videoModal.style.display = 'block'
     imageModal.style.display = 'block'
 
-    if(imgNext) {
-        //console.log(imageModal);  
+    if (imgNext) {
         videoModal.style.display = 'none'
-       //console.log('IMG SRC',Medias.getElementsByClassName('media_card')[id_media].querySelector('img').src); 
-       srcNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('img').src.split('http://127.0.0.1:5501')[1]
-       imageModal.setAttribute('src', srcNext)
-       
-    } else if(videoNext) {
-        //console.log(videoModal); 
+        srcNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('img').src.split('http://127.0.0.1:5501')[1]
+        imageModal.setAttribute('src', srcNext)
+    } else if (videoNext) {
         imageModal.style.display = 'none'
-        //console.log('VIDEO SRC',Medias.getElementsByClassName('media_card')[id_media].querySelector('source').src);
-        srcNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('source').src.split('http://127.0.0.1:5501')[1]
+        srcNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('source').src.split('http://127.0.0.1:5501')[1]
         videoModal.setAttribute('src', srcNext)
     }
-
-
 })
 
-
 btnPrevious.addEventListener('click', () => {
-    //console.log('previous');
-    let id_media = modalPlayer.getAttribute('id_media')
+    let idMedia = modalPlayer.getAttribute('idMedia')
 
-    id_media = parseInt(id_media) - 1
-    if(id_media == -1 ) {
-        id_media = n -1 
+    idMedia = parseInt(idMedia) - 1
+    if (idMedia == -1) {
+        idMedia = n - 1
     }
 
-    modalPlayer.setAttribute('id_media', id_media)
- 
-    let imgNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('img')
-    let videoNext = Medias.getElementsByClassName('media_card')[id_media].querySelector('source')
+    modalPlayer.setAttribute('idMedia', idMedia)
+
+    const imgNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('img')
+    const videoNext = Medias.getElementsByClassName('media_card')[idMedia].querySelector('source')
     let srcPrevious = ''
 
     videoModal.style.display = 'block'
     imageModal.style.display = 'block'
 
-    if(imgNext) {
-        //console.log(imageModal);  
+    if (imgNext) {
         videoModal.style.display = 'none'
-       //console.log('IMG SRC',Medias.getElementsByClassName('media_card')[id_media].querySelector('img').src); 
-       srcPrevious = Medias.getElementsByClassName('media_card')[id_media].querySelector('img').src.split('http://127.0.0.1:5501')[1]
-       imageModal.setAttribute('src', srcPrevious)
-       
-    } else if(videoNext) {
-        //console.log(videoModal); 
+        srcPrevious = Medias.getElementsByClassName('media_card')[idMedia].querySelector('img').src.split('http://127.0.0.1:5501')[1]
+        imageModal.setAttribute('src', srcPrevious)
+    } else if (videoNext) {
         imageModal.style.display = 'none'
-        //console.log('VIDEO SRC',Medias.getElementsByClassName('media_card')[id_media].querySelector('source').src);
-        srcPrevious = Medias.getElementsByClassName('media_card')[id_media].querySelector('source').src.split('http://127.0.0.1:5501')[1]
+        srcPrevious = Medias.getElementsByClassName('media_card')[idMedia].querySelector('source').src.split('http://127.0.0.1:5501')[1]
         videoModal.setAttribute('src', srcPrevious)
     }
 })
 
-
-
-
-
-console.log(modalPlayer);
+console.log(modalPlayer)
 modalPlayer.addEventListener('keydown', e => {
-    console.log('works');
+    console.log('works')
 })
 
-for(let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
-   const n = Medias.getElementsByClassName('media_card').length
-   Medias.getElementsByClassName('media_card')[i].setAttribute('id_media', i)
+for (let i = 0; i < Medias.getElementsByClassName('media_card').length; i++) {
+    Medias.getElementsByClassName('media_card')[i].setAttribute('idMedia', i)
 
-  // console.log(Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML);
-
-  // console.log(Medias.getElementsByClassName('media_card')[i]);
-   // console.log(n);
-    let img =   Medias.getElementsByClassName('media_card')[i].querySelector('img')
-
-    let video =   Medias.getElementsByClassName('media_card')[i].querySelector('video')
+    const img = Medias.getElementsByClassName('media_card')[i].querySelector('img')
+    const video = Medias.getElementsByClassName('media_card')[i].querySelector('video')
     let mediaType = ''
     let mediaTypeModal = ''
 
-
-    if(video == null && img !== null){
+    if (video == null && img !== null) {
         mediaType = img
         mediaTypeModal = imageModal
         mediaTypeModal.setAttribute('alt', Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML)
-        //console.log('IMAGE',mediaType);
-
-    }
-    
-    else if(img == null && video !== null){
+    } else if (img == null && video !== null) {
         mediaType = video
-        mediaTypeModal = videoModal    
-        mediaTypeModal.setAttribute('aria-label', Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML)  
-    } 
+        mediaTypeModal = videoModal
+        mediaTypeModal.setAttribute('aria-label', Medias.getElementsByClassName('media_card')[i].querySelector('.media_title').innerHTML)
+    }
 
-//console.log( Medias.getElementsByClassName('media_card')[i].querySelector('img'));
- 
-    //console.log(i);
-   
-        if(mediaType) {
-            
+        if (mediaType) {
             mediaType.addEventListener('click', () => {
-                modalPlayer.style.display='block'
-                modalPlayer.setAttribute('id_media', i)  
+                modalPlayer.style.display = 'block'
+                modalPlayer.setAttribute('idMedia', i)
 
-                
                 let srcOnClick = ''
-                if(mediaType == video) {
-                
-                    imageModal.style.display = 'none'   
-                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('source').src.split('http://127.0.0.1:5501')[1]             
-                }else {
-                    
+                if (mediaType == video) {
+                    imageModal.style.display = 'none'
+                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('source').src.split('http://127.0.0.1:5501')[1]
+                } else {
                     videoModal.style.display = 'none'
-                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('img').src.split('http://127.0.0.1:5501')[1]             
+                    srcOnClick = Medias.getElementsByClassName('media_card')[i].querySelector('img').src.split('http://127.0.0.1:5501')[1]
                 }
 
                     mediaTypeModal.setAttribute('src', srcOnClick)
-                    
-                    mediaTypeModal.setAttribute('id', 'modal_image_player')         
-                    mediaTypeModal.setAttribute('id_media', i)  
+
+                    mediaTypeModal.setAttribute('id', 'modal_image_player')
+                    mediaTypeModal.setAttribute('idMedia', i)
                     modalPlayer.appendChild(mediaTypeModal)
             })
 
-
-            
-            //accessibility media player open/close player ; next/previous media
+            // accessibility media player open/close player ; next/previous media
             mediaType.addEventListener('keydown', e => {
-                if(e.keyCode ===13){
+                if (e.keyCode === 13) {
                     mediaType.click()
-                } else if(e.keyCode ===27){
+                } else if (e.keyCode === 27) {
                     closeBtn.click()
-                }else if(e.keyCode ===39){
+                } else if (e.keyCode === 39) {
                     btnNext.click()
-                }else if(e.keyCode === 37){
+                } else if (e.keyCode === 37) {
                     btnPrevious.click()
-                }else {
-                
+                } else {
+                    // message error
                 }
             })
         }
-
-    } 
-   
+    }
 
     closeBtn.addEventListener('click', () => {
-        modalPlayer.style.display='none'
+        modalPlayer.style.display = 'none'
         videoModal.style.display = 'block'
         imageModal.style.display = 'block'
     })
 
-
-   
-
 mainWrapper.appendChild(modalPlayer)
 
-
 return Medias
-
 }

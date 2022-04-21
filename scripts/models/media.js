@@ -1,6 +1,5 @@
-class Media{
-
-    constructor(media) {
+class Media {
+    constructor (media) {
         this._id = media.id
         this._photographerId = media.photographerId
         this._title = media.title
@@ -9,42 +8,38 @@ class Media{
         this._likes = media.likes
         this._date = media.date
         this._price = media.price
-        //console.log(media);
+        // console.log(media);
     }
 
-    get id() {
+    get id () {
         return this._id
     }
 
-    get photographerId() {
+    get photographerId () {
         return this._photographerId
     }
 
-    get title(){
+    get title () {
         return this._title
     }
 
-    get type(){
-  
-        if(this._image == undefined) {
+    get type () {
+        if (this._image == undefined) {
             return this._video
-        } else{
+        } else {
             return this._image
         }
     }
 
-  
-    
-    get likes(){
+    get likes () {
         return this._likes
     }
-    get date(){
+
+    get date () {
         return this._date
     }
-    get price(){
-        return this._price + "€"
+
+    get price () {
+        return this._price + '€'
     }
-
-
 }
-

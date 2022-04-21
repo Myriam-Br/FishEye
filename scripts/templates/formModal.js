@@ -1,161 +1,137 @@
-class ContactFormModal{
-    constructor(){
-      
+class ContactFormModal {
+    constructor () {
       this.$wrapper = document.createElement('div')
       this.$contactModal = document.getElementById('contact_modal')
-      this.$modalWrapper= document.querySelector('.modal') 
-      this.$h2 = document.getElementById('contact_title') 
-             
+      this.$modalWrapper = document.querySelector('.modal')
+      this.$h2 = document.getElementById('contact_title')
     }
 
-    clearForm(){
-      //console.log(this.$wrapper.querySelector('form').querySelectorAll('input').length);
-      for (let i = 0 ; i < this.$wrapper.querySelector('form').querySelectorAll('input').length; i++) {
+    clearForm () {
+      // console.log(this.$wrapper.querySelector('form').querySelectorAll('input').length);
+      for (let i = 0; i < this.$wrapper.querySelector('form').querySelectorAll('input').length; i++) {
        // console.log(this.$wrapper.querySelector('form').querySelectorAll('input')[i].value);
-        this.$wrapper.querySelector('form').querySelectorAll('input')[i].value = ''  
+        this.$wrapper.querySelector('form').querySelectorAll('input')[i].value = ''
       }
-      //console.log(this.$modalWrapper);
-      this.$contactModal.style.display='none'
-
+      // console.log(this.$modalWrapper);
+      this.$contactModal.style.display = 'none'
     }
 
-    closeFormKeyBoard(){
-
+    closeFormKeyBoard () {
       this.$contactModal.addEventListener('keydown', e => {
-        if(this.$contactModal.classList.contains('active')){
-          if(e.keyCode === 27){
-            this.$contactModal.style.display='none'
+        if (this.$contactModal.classList.contains('active')) {
+          if (e.keyCode === 27) {
+            this.$contactModal.style.display = 'none'
           }
-        }     
+        }
       })
     }
 
-    onSubmitForm() {
- 
-
-      console.log(this.$wrapper.querySelector('form').querySelector('#message'));
-      console.log(this.$wrapper.querySelector('form').querySelector('#firstName').value);
+    onSubmitForm () {
+      console.log(this.$wrapper.querySelector('form').querySelector('#message'))
+      console.log(this.$wrapper.querySelector('form').querySelector('#firstName').value)
       this.$wrapper
       .querySelector('form')
-      .addEventListener('submit',e => {
+      .addEventListener('submit', e => {
         e.preventDefault()
 
+        console.log(this.$wrapper.querySelector('form').querySelector('#firstName'))
 
-        console.log(this.$wrapper.querySelector('form').querySelector('#firstName'));
+        // regex
+        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        const lettersFilter = /^[a-zA-Z]+$/
 
-        //regex 
-        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const lettersFilter = /^[a-zA-Z]+$/;
-
-
-     
-        let firstNameInput = this.$wrapper.querySelector('form').querySelector('#firstName');
-        let error_firstName_input = this.$wrapper.querySelector('form').querySelector('.error_firstName_input');
+        const firstNameInput = this.$wrapper.querySelector('form').querySelector('#firstName')
+        const errorFirstNameInput = this.$wrapper.querySelector('form').querySelector('.error_firstName_input')
         let valideFirstName = true
 
-        let lastNameInput = this.$wrapper.querySelector('form').querySelector('#lastName');
-        let error_lastName_input = this.$wrapper.querySelector('form').querySelector('.error_lastName_input');
+        const lastNameInput = this.$wrapper.querySelector('form').querySelector('#lastName')
+        const errorLastNameInput = this.$wrapper.querySelector('form').querySelector('.error_lastName_input')
         let valideLastName = true
 
-        let emailInput =this.$wrapper.querySelector('form').querySelector('#email');
-        let error_email_input = this.$wrapper.querySelector('form').querySelector('.error_email_input');
+        const emailInput = this.$wrapper.querySelector('form').querySelector('#email')
+        const errorEmailInput = this.$wrapper.querySelector('form').querySelector('.error_email_input')
         let valideEmail = true
 
-        let messageInput = this.$wrapper.querySelector('form').querySelector('#message');
-        let error_message_input = this.$wrapper.querySelector('form').querySelector('.error_message_input');
+        const messageInput = this.$wrapper.querySelector('form').querySelector('#message')
+        const errorMessageInput = this.$wrapper.querySelector('form').querySelector('.error_message_input')
         let valideMessage = true
 
-   
-        //verification input firstName
-        if(firstNameInput.value == ''){
-          error_firstName_input.innerHTML = 'veuillez entrer votre prénom'
+        // verification input firstName
+        if (firstNameInput.value == '') {
+          errorFirstNameInput.innerHTML = 'veuillez entrer votre prénom'
           valideFirstName = false
          // return true
-        }else if(!firstNameInput.value.match(lettersFilter)){
-          error_firstName_input.innerHTML = 'votre prénom doit contenir uniquement des lettres'
-          valideFirstName = false 
+        } else if (!firstNameInput.value.match(lettersFilter)) {
+          errorFirstNameInput.innerHTML = 'votre prénom doit contenir uniquement des lettres'
+          valideFirstName = false
         } else {
-          error_firstName_input.innerHTML = ''
+          errorFirstNameInput.innerHTML = ''
           valideFirstName = true
         }
 
-
-        //verification input lastName
-        if(lastNameInput.value == ''){
-          error_lastName_input.innerHTML = 'veuillez entrer votre nom '
+        // verification input lastName
+        if (lastNameInput.value == '') {
+          errorLastNameInput.innerHTML = 'veuillez entrer votre nom '
           valideLastName = false
-        
+
          // return true
-        }else if(!lastNameInput.value.match(lettersFilter)){
-          error_lastName_input.innerHTML = 'votre nom doit contenir uniquement des lettres'
+        } else if (!lastNameInput.value.match(lettersFilter)) {
+          errorLastNameInput.innerHTML = 'votre nom doit contenir uniquement des lettres'
           valideLastName = false
         } else {
-          error_lastName_input.innerHTML = ''
-          valideLastName  = true
+          errorLastNameInput.innerHTML = ''
+          valideLastName = true
         }
 
-        
-        //verification input lastName
-        if(emailInput.value == ''){
-          error_email_input.innerHTML = 'veuillez entrer votre email '
+        // verification input lastName
+        if (emailInput.value == '') {
+          errorEmailInput.innerHTML = 'veuillez entrer votre email '
           valideEmail = false
          // return true
-        }else if(!emailInput.value.match(emailFilter)){
-          error_email_input.innerHTML = 'veuillez entrer un email valide'
-          valideEmail = false        
+        } else if (!emailInput.value.match(emailFilter)) {
+          errorEmailInput.innerHTML = 'veuillez entrer un email valide'
+          valideEmail = false
         } else {
-          error_email_input.innerHTML = ''
+          errorEmailInput.innerHTML = ''
           valideEmail = true
         }
 
-        if(messageInput.value == ''){
-          error_message_input.innerHTML = 'veuillez entrer votre message '
+        if (messageInput.value == '') {
+          errorMessageInput.innerHTML = 'veuillez entrer votre message '
           valideMessage = false
          // return true
-        }else if(messageInput.value !== ''){
-          error_message_input.innerHTML = ''
-          valideMessage = true        
-        } 
-
-        if(valideFirstName || valideLastName || valideEmail || valideMessage) {
-          let contact = new ContactForm({
-            firstName : firstNameInput.value,
-            lastName : lastNameInput.value,
-            email : emailInput.value,
-            message : messageInput.value,
-          })
-
-          console.log(contact);
-
-          //fermer modal contact
-          this.clearForm()
-          
-
-       
-
-          return true
-        } else{
-
+        } else if (messageInput.value !== '') {
+          errorMessageInput.innerHTML = ''
+          valideMessage = true
         }
 
-      })
+        if (valideFirstName || valideLastName || valideEmail || valideMessage) {
+          const contact = new ContactForm({
+            firstName: firstNameInput.value,
+            lastName: lastNameInput.value,
+            email: emailInput.value,
+            message: messageInput.value
+          })
 
+          console.log(contact)
+
+          // fermer modal contact
+          this.clearForm()
+
+          return true
+        } else {
+          // error message
+        }
+      })
     }
 
+    createContactForm () {
+        this.$h2.innerHTML = 'Contactez-moi' + ' ' + localStorage.getItem('name')
 
+        this.$modalWrapper.setAttribute('aria-label', 'Contact me' + ' ' + localStorage.getItem('name'))
 
-
-    createContactForm() {
-
-   
-        this.$h2.innerHTML = "Contactez-moi" +" "+ localStorage.getItem('name')
-    
-        this.$modalWrapper.setAttribute('aria-label',  "Contact me" +" "+ localStorage.getItem('name'))
-       
-     
-    
         const formContact = document.createElement('form')
-        ////////////////firstName
+        /// /////////////firstName
         const firstNameDiv = document.createElement('div')
         firstNameDiv.classList.add('firstName_section')
 
@@ -165,17 +141,16 @@ class ContactFormModal{
         firstName.setAttribute('id', 'firstName')
         firstName.setAttribute('tabindex', '3')
 
-        firstNameLabel.innerHTML = "First name"   
+        firstNameLabel.innerHTML = 'First name'
 
-        let errorFirstName = document.createElement('p')
+        const errorFirstName = document.createElement('p')
         errorFirstName.setAttribute('class', 'error_firstName_input')
 
         firstNameDiv.appendChild(firstNameLabel)
         firstNameDiv.appendChild(firstName)
         firstNameDiv.appendChild(errorFirstName)
-    
 
-      /////////////////lastName
+      /// //////////////lastName
         const lastNameDiv = document.createElement('div')
         lastNameDiv.classList.add('lastName_section')
 
@@ -185,44 +160,38 @@ class ContactFormModal{
         const lastNameLabel = document.createElement('label')
         lastNameLabel.setAttribute('for', 'lastName')
 
-        lastNameLabel.innerHTML = "Last name"   
+        lastNameLabel.innerHTML = 'Last name'
 
-        let errorLastName = document.createElement('p')
+        const errorLastName = document.createElement('p')
         errorLastName.setAttribute('class', 'error_lastName_input')
-
 
         lastNameDiv.appendChild(lastNameLabel)
         lastNameDiv.appendChild(lastName)
         lastNameDiv.appendChild(errorLastName)
 
-        /////////////////email
+        /// //////////////email
 
-        
         const emailDiv = document.createElement('div')
         emailDiv.classList.add('email_section')
 
-
-        
         const email = document.createElement('input')
         email.setAttribute('id', 'email')
         email.setAttribute('tabindex', '5')
         const emailLabel = document.createElement('label')
         emailLabel.setAttribute('for', 'email')
 
-        emailLabel.innerHTML = "Email"
+        emailLabel.innerHTML = 'Email'
 
-        let errorEmail = document.createElement('p')
+        const errorEmail = document.createElement('p')
         errorEmail.setAttribute('class', 'error_email_input')
-
 
         emailDiv.appendChild(emailLabel)
         emailDiv.appendChild(email)
         emailDiv.appendChild(errorEmail)
-        
 
-        //console.log(emailDiv);
+        // console.log(emailDiv);
 
-        /////////////message
+        /// //////////message
         const messageDiv = document.createElement('div')
         messageDiv.classList.add('message_section')
 
@@ -232,46 +201,36 @@ class ContactFormModal{
         const messageLabel = document.createElement('label')
         messageLabel.setAttribute('for', 'message')
 
-        messageLabel.innerHTML="Your message"
+        messageLabel.innerHTML = 'Your message'
 
-        let errorMessageSection = document.createElement('p')
+        const errorMessageSection = document.createElement('p')
         errorMessageSection.setAttribute('class', 'error_message_input')
-
 
         messageDiv.appendChild(messageLabel)
         messageDiv.appendChild(message)
         messageDiv.appendChild(errorMessageSection)
-        
 
-        ///////button submit
+        /// ////button submit
         const btnSubmit = document.createElement('button')
         btnSubmit.classList.add('btn_submit')
         btnSubmit.setAttribute('aria-label', 'Send')
         btnSubmit.setAttribute('tabindex', '7')
-        btnSubmit.innerHTML = "Envoyer"
+        btnSubmit.innerHTML = 'Envoyer'
 
         formContact.appendChild(firstNameDiv)
         formContact.appendChild(lastNameDiv)
         formContact.appendChild(emailDiv)
         formContact.appendChild(messageDiv)
         formContact.appendChild(btnSubmit)
-        
-  
+
         this.$wrapper.appendChild(formContact)
         this.$modalWrapper.appendChild(this.$wrapper)
-        
 
-        
         this.onSubmitForm()
         this.closeFormKeyBoard()
-
-     
     }
 
-    
-
-    render(){
+    render () {
       this.createContactForm()
     }
-    
 }

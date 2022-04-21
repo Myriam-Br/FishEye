@@ -1,8 +1,7 @@
 class Photographer {
-    constructor(photographers) {
-
+    constructor (photographers) {
         this._id = photographers.id
-        this._name = photographers.name  
+        this._name = photographers.name
         this._city = photographers.city
         this._country = photographers.country
         this._tagline = photographers.tagline
@@ -10,42 +9,31 @@ class Photographer {
         this._portrait = photographers.portrait
     }
 
-    get id(){
-
+    get id () {
         return this._id
-        
     }
 
-    get name(){
-
+    get name () {
         return this._name
-
     }
 
-    get city(){
-
+    get city () {
         return this._city
-
     }
 
-    get country(){
-
+    get country () {
         return this._country
-
     }
 
-    get tagline(){
-
+    get tagline () {
         return this._tagline
-
     }
 
-    get price(){
-
-        return this._price+"€"
+    get price () {
+        return this._price + '€'
     }
 
-    get portrait(){
+    get portrait () {
         return this._portrait
     }
 }
