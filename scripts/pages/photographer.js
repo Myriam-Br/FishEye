@@ -9,7 +9,7 @@ class PhotographerPage{
         this.$modalWrapper= document.querySelector('.modal')
         this.$modalWrapperFormDisplay= document.getElementById('contact_modal') 
         
-        this.mediaApi = new MediaApi('/data/photographers.json')
+        this.mediaApi = new MediaApi(window.location.href +'/data/photographers.json')
         
         this.mediaCardDiv = document.querySelector('.media_card')
 

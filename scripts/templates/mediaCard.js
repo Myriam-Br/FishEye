@@ -122,7 +122,7 @@ class DisplayMedia{
             if(media._video == undefined) {
                 const image = document.createElement('img')
                 image.setAttribute('id', 'media' + media.id)
-                image.setAttribute('src', `/media/${this._name}/${media.type}`)
+                image.setAttribute('src', window.location.href +`/media/${this._name}/${media.type}`)
                 image.setAttribute('alt', media.type.split('.jpg')[0])
                 image.setAttribute('class', 'media')
                 mediaCardDiv.appendChild(image)
@@ -135,7 +135,7 @@ class DisplayMedia{
                 video.setAttribute('aria-label', media.type.split('.mp4')[0])
                 const sourceVideo = document.createElement('source')
                 video.appendChild(sourceVideo)
-                sourceVideo.setAttribute('src',  `/media/${this._name}/${media.type}`)
+                sourceVideo.setAttribute('src',  window.location.href +`/media/${this._name}/${media.type}`)
                 sourceVideo.setAttribute('type', 'video/mp4')
                 sourceVideo.setAttribute('id', 'media' + media.id)
                 mediaCardDiv.appendChild(video)

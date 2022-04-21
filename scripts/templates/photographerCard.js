@@ -16,7 +16,7 @@ class PhotographerCard{
         //portrait pic
         const img = document.createElement( 'img' );
         img.classList.add('pfp')
-        img.setAttribute("src", `/media/Photographers ID Photos/${this.photographer.portrait}`)
+        img.setAttribute("src", window.location.href +`/media/Photographers ID Photos/${this.photographer.portrait}`)
         img.setAttribute('alt', this.photographer.name)
     
       
