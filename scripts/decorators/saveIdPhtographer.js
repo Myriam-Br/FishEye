@@ -7,7 +7,7 @@ function cardPhotographer(photographer){
             const photographerID = localStorage.setItem('id', photographer.photographer.id)
             //console.log('IDsaved',photographerID);
   
-            window.location.assign("photographer.html")
+            window.location.assign(window.location.href +"photographer.html")
 
         } )  
 
