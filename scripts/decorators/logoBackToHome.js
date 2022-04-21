@@ -1,7 +1,8 @@
 function backToHome() {
     this.$logo = document.querySelector('.logo')
     this.$logo.addEventListener('click',()=> {
-        window.location.assign(window.location.href+"index.html")
+        //window.location.assign("index.html")
+        window.location.assign(" ")
     })
 
     this.$logo.addEventListener('keydown', e => {
