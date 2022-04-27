@@ -12,8 +12,8 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "indent": ["off", "always"],
-        "space-before": ["off", "always"],
+        "indent": ["off", "always"],//
+        "space-before": ["off", "always"],//
         "eqeqeq": "off",
         "brace-style": ["off", "always"],
         "no-unused-vars": "off",
