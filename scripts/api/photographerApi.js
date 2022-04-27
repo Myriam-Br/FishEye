@@ -1,6 +1,6 @@
 class API {
     constructor (url) {
-        this._url = url
+        this._url = window.location.href + url
         console.log(this._url)
         console.log(window.location.href)
     }
