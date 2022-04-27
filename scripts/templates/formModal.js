@@ -18,6 +18,7 @@ class ContactFormModal {
 
     closeFormKeyBoard () {
       this.$contactModal.addEventListener('keydown', e => {
+        console.log(e);
         if (this.$contactModal.classList.contains('active')) {
           if (e.keyCode === 27) {
             this.$contactModal.style.display = 'none'
