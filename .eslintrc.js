@@ -12,13 +12,10 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "indent": ["off", "always"],//
-        "space-before": ["off", "always"],//
-        "eqeqeq": "off",
-        "brace-style": ["off", "always"],
-        "no-unused-vars": "off",
-        "no-useless-constructor": "warn",
-        "no-undef": "warn",
+        "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
+        "no-unused-vars":['warn'],
+        "no-useless-constructor":['warn'],
+        "no-undef":['off'],
     }
 }
 
